@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-light navbar-light sticky-top">
+        <a href="index.html"><img src="img/logo_header_vectorized.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item text-center login-link d-none">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-cuenta">Cuenta</a>
+                </li>
+                <li class="nav-item text-center login-link d-none">
+                    <a class="nav-link" href="#" data-toggle="modal" id="logout">Salir</a>
+                </li>
+                <li class="nav-item text-center login-link d-none">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-tarea">Crear Tarea</a>
+                </li>
+                <li class="nav-item text-center logout-link d-none">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-login">Ingresa</a>
+                </li>
+                <li class="nav-item text-center logout-link d-none">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-registro">Registrate</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Modal Registrar-->
+    <div class="modal fade" id="modal-registro">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Registrate</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form-registro">
+                        <div class="form-group">
+                            <label for="signup-email">Direccion de E-Mail</label>
+                            <input type="email" id="signup-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Contraseña</label>
+                            <input type="password" id="signup-password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal Login-->
+    <div class="modal fade" id="modal-login">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Ingresar</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form-login">
+                        <div class="form-group">
+                            <label for="login-email">Direccion de E-Mail</label>
+                            <input type="email" id="login-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Contraseña</label>
+                            <input type="password" id="login-password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal Cuenta-->
+    <div class="modal fade" id="modal-cuenta">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Detalles de Cuenta</h4>
+                    <div class="detalles-cuenta"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal Crear Tarea-->
+    <div class="modal fade" id="modal-tarea">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Crear Tarea</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form-tarea">
+                        <div class="form-group">
+                            <label for="titulo-tarea">Nombre Tarea</label>
+                            <input type="text" id="titulo-tarea" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contenido">Descripcion</label>
+                            <textarea id="contenido" class="form-control" required></textarea>
+                        </div>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Crear Tarea</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Lista Tareas-->
+    <div class="container">
+        <h2>Lista Tareas</h2>
+        <div id="accordion">
+            <!-- <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                        Collapsible Group Item #1
+                    </a>
+                </div>
+                <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                        Collapsible Group Item #2
+                    </a>
+                </div>
+                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                        Collapsible Group Item #3
+                    </a>
+                </div>
+                <div id="collapseThree" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAmLoCZwVOegA7-PvxqOxzXjNADBDTckRs",
+            authDomain: "mp-todojs-user.firebaseapp.com",
+            databaseURL: "https://mp-todojs-user.firebaseio.com",
+            projectId: "mp-todojs-user",
+            appId: "1:455382973494:web:dbac61ff388cbdfdb66c97",
+            measurementId: "G-CQDTXM4815"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        // referencia auth y firestore
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
