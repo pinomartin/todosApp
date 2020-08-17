@@ -19,26 +19,36 @@ const setupNavUI = (user) => {
             item.classList.remove('d-none')
         })
     }
-    console.log(loggedInLinks)
+    
 }
 
 const setupTodos = (data) => {
 
     if(data.length){
         let html = '';
-        data.forEach(doc => {
+        data.forEach((doc,index) => {
             const todo = doc.data();
+            console.log(todo)
             console.log(todo.titulo)
             const card = `
             <div class="card">
             <div class="card-header">
-                <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                <a class="card-link" data-toggle="collapse" href="#collapse${index}">
                     ${todo.titulo}
                 </a>
             </div>
-            <div id="collapseOne" class="collapse" data-parent="#accordion">
+            <div id="collapse${index}" class="collapse" data-parent="#accordion">
                 <div class="card-body">
-                    ${todo.content}
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 text-center-sm">
+                            <p>${todo.content}</p>
+                        </div>
+                        <div class="col-12 col-md-6 text-right">
+                            <button type="button" class="btn btn-sm btn-success">Terminada</button>
+                            <button type="button" class="btn btn-sm btn-warning">Editar</button>
+                        </div>
+                    </div>
+                
                 </div>
             </div>
         </div>

@@ -8,8 +8,9 @@ auth.onAuthStateChanged( user => {
     if(user){
         
         //Getter de la Coleccion en Firestore
-        db.collection('todos').get().then(snapshot => {
+        db.collection('todos').onSnapshot(snapshot => {
             setupTodos(snapshot.docs);
+            console.log(snapshot.docs)
             setupNavUI(user);
         });
         console.log('user logged in: ', user)
@@ -64,4 +65,22 @@ loginForm.addEventListener('submit', (e) => {
     })
     
 
+})
+
+//Agregar Todo's
+const addTodoForm = document.getElementById('form-tarea');
+addTodoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    db.collection('todos').add({
+        content : addTodoForm['contenido'].value,
+        titulo : addTodoForm['titulo-tarea'].value
+    }).then(() => {
+        //Cierra modal y resetea form
+        console.log(addTodoForm['titulo-tarea'].value)
+        $('#modal-tarea').modal('hide');
+        addTodoForm.reset();
+    }).catch(err => {
+        console.log(err.message);
+    })
 })

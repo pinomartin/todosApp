@@ -1,0 +1,15 @@
+body{
+    font-family: monospace!important;
+    height: 100vh;
+    background-color: darkseagreen;
+}
+
+
+
+.container{
+    border-radius: 2rem 0rem;
+}
+
+.minh-100 {
+    height: 50vh;
+  }

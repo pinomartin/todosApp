@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Live NotePad</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./custom.css">
 </head>
 
 <body>
@@ -132,7 +133,7 @@
                             <label for="contenido">Descripcion</label>
                             <textarea id="contenido" class="form-control" required></textarea>
                         </div>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Crear Tarea</button>
+                        <button type="submit" class="btn btn-danger">Crear Tarea</button>
                     </form>
                 </div>
             </div>
@@ -140,10 +141,12 @@
     </div>
 
     <!--Lista Tareas-->
-    <div class="container">
-        <h2>Lista Tareas</h2>
-        <div id="accordion">
-            <!-- <div class="card">
+    <div class="container mt-5 w-50 bg-dark p-3">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <h2 class="text-center text-white mb-2">Lista Tareas</h2>
+                <div id="accordion">
+                    <!-- <div class="card">
                 <div class="card-header">
                     <a class="card-link" data-toggle="collapse" href="#collapseOne">
                         Collapsible Group Item #1
@@ -185,6 +188,8 @@
                     </div>
                 </div>
             </div> -->
+                </div>
+            </div>
         </div>
     </div>
 
