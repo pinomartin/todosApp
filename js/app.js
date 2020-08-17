@@ -43,7 +43,7 @@ const setupTodos = (data) => {
                         <div class="col-12 col-md-6 text-center-sm">
                             <p>${todo.content}</p>
                         </div>
-                        <div class="col-12 col-md-6 text-right">
+                        <div class="col-12 col-md-6 text-sm-center text-md-right">
                             <button type="button" class="btn btn-sm btn-success">Terminada</button>
                             <button type="button" class="btn btn-sm btn-warning">Editar</button>
                         </div>

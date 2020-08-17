@@ -4,7 +4,10 @@ body{
 }
 
 
-
 .container{
     border-radius: 2rem 0rem;
+}
+
+.card{
+    font-size: larger;
 }
