@@ -1,6 +1,7 @@
 const todosListUI = document.getElementById('accordion');
 const loggedInLinks = document.querySelectorAll('.login-link');
 const loggedOutLinks = document.querySelectorAll('.logout-link');
+const navBarUI = document.getElementById('')
 
 const setupNavUI = (user) => {
     if(user){
@@ -19,6 +20,8 @@ const setupNavUI = (user) => {
             item.classList.remove('d-none')
         })
     }
+
+    $('#collapsibleNavbar').collapse('hide');
     
 }
 
@@ -40,12 +43,12 @@ const setupTodos = (data) => {
             <div id="collapse${index}" class="collapse" data-parent="#accordion">
                 <div class="card-body">
                     <div class="row justify-content-center">
-                        <div class="col-12 col-md-6 text-center-sm">
+                        <div class="col-12 col-md-8 text-center-sm text-left-md">
                             <p>${todo.content}</p>
                         </div>
-                        <div class="col-12 col-md-6 text-sm-center text-md-right">
-                            <button type="button" class="btn btn-sm btn-success">Terminada</button>
-                            <button type="button" class="btn btn-sm btn-warning">Editar</button>
+                        <div class="col-12 col-md-4 align-self-center text-sm-center text-md-right botonera">
+                            <button type="button" class="btn btn-sm btn-success">OK !</button>
+                            <button type="button" class="btn btn-sm btn-warning">Edit</button>
                         </div>
                     </div>
                 
@@ -57,6 +60,8 @@ const setupTodos = (data) => {
         });
     
         todosListUI.innerHTML = html;
+       
+        // .setAttribute('aria-expanded', 'true');
     }else{
         todosListUI.innerHTML = `<h5 class="text-center mt-5">Ingresa para ver tu lista !!</h5>`;
     }

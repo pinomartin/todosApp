@@ -6,8 +6,43 @@ body{
 
 .container{
     border-radius: 2rem 0rem;
+    margin-bottom: 2rem;
 }
+@media (min-width: 980px){
+    #accordion{
+        display: flex;
+        flex-direction: row!important;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .card{
+        flex-basis: calc(45% - 1rem);
+        margin: 1.5rem 1rem;
+        text-align: center;
+    }
+    
+    .card-body p {
+        text-align: left!important;
+        line-height: 1.4rem;
+    }
+
+    .botonera{
+        display: flex;
+        flex-direction: column!important;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding-right: 0.5rem;
+        padding-left: 0;
+    }
+    .botonera button{
+        margin-bottom:0.5rem
+    }
+}
+
 
 .card{
     font-size: larger;
+    margin-bottom: 1rem;
 }

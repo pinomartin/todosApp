@@ -1,8 +1,4 @@
 
-
-
-
-
 //Listener de state Changes (recibe un usuario que esta activo , si el usuario no esta logeado devuelve null)
 auth.onAuthStateChanged( user => {
     if(user){
