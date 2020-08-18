@@ -7,7 +7,7 @@ const setupNavUI = (user) => {
     if(user){
         //account data
         db.collection('users').doc(user.uid).get().then(doc=> {
-            
+            console.log(doc.data());
             const html = `
             <div class="row">
                  <div class="col-6">
@@ -63,7 +63,7 @@ const setupTodos = (data) => {
                         <div class="col-12 col-md-8 text-center-sm text-left-md">
                             <p>${todo.content}</p>
                         </div>
-                        <div class="col-12 col-md-4 align-self-center text-sm-center text-md-right botonera">
+                        <div class="col-12 col-md-4 align-self-center text-right botonera">
                             <button type="button" class="btn btn-sm btn-success">OK !</button>
                             <button type="button" class="btn btn-sm btn-warning">Edit</button>
                         </div>

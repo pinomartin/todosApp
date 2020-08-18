@@ -26,12 +26,12 @@ registroForm.addEventListener('submit', (e) => {
     
     const email = registroForm['signup-email'].value;
     const password = registroForm['signup-password'].value;
-    const username = registroForm['signup-name'].value;
+    
 
     //Registrar al usuario
     auth.createUserWithEmailAndPassword(email, password).then( cred => {
         return db.collection('users').doc(cred.user.uid).set({
-            name: username
+            name: registroForm['signup-name'].value
         })
         
     }).then( () => {
