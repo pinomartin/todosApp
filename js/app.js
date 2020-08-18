@@ -1,16 +1,33 @@
 const todosListUI = document.getElementById('accordion');
 const loggedInLinks = document.querySelectorAll('.login-link');
 const loggedOutLinks = document.querySelectorAll('.logout-link');
-const navBarUI = document.getElementById('')
+const accountDetails = document.getElementById('detalles-cuenta');
 
 const setupNavUI = (user) => {
     if(user){
-        loggedInLinks.forEach(item => {
-            item.classList.add('d-block')
-        })
-        loggedOutLinks.forEach(item => {
-            item.classList.add('d-none')
-        })
+        //account data
+        db.collection('users').doc(user.uid).get().then(doc=> {
+            
+            const html = `
+            <div class="row">
+                 <div class="col-6">
+                        <img src="" alt="">
+                 </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <p><small>E-mail: </small>${user.email}</p>
+                        <p><small>Nombre: </small>${doc.data().name}</p>
+                    </div>
+            </div>
+            `;
+            accountDetails.innerHTML = html;
+        });
+
+
+        loggedInLinks.forEach(item => {item.classList.add('d-block')})
+        loggedOutLinks.forEach(item => { item.classList.add('d-none')})
+        
     }else{
         loggedInLinks.forEach(item => {
             item.classList.remove('d-block')
@@ -19,6 +36,8 @@ const setupNavUI = (user) => {
         loggedOutLinks.forEach(item => {
             item.classList.remove('d-none')
         })
+        accountDetails.innerHTML = '';
+
     }
 
     $('#collapsibleNavbar').collapse('hide');
@@ -31,8 +50,6 @@ const setupTodos = (data) => {
         let html = '';
         data.forEach((doc,index) => {
             const todo = doc.data();
-            console.log(todo)
-            console.log(todo.titulo)
             const card = `
             <div class="card">
             <div class="card-header">

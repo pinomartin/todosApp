@@ -6,10 +6,9 @@ auth.onAuthStateChanged( user => {
         //Getter de la Coleccion en Firestore
         db.collection('todos').onSnapshot(snapshot => {
             setupTodos(snapshot.docs);
-            console.log(snapshot.docs)
             setupNavUI(user);
-        });
-        console.log('user logged in: ', user)
+        }, err => { console.log(err.message)})
+
     }else{
         setupNavUI();
         setupTodos([]);
@@ -27,10 +26,15 @@ registroForm.addEventListener('submit', (e) => {
     
     const email = registroForm['signup-email'].value;
     const password = registroForm['signup-password'].value;
+    const username = registroForm['signup-name'].value;
 
     //Registrar al usuario
-    auth.createUserWithEmailAndPassword(email, password).then( credencial => {
-        console.log(credencial.user)
+    auth.createUserWithEmailAndPassword(email, password).then( cred => {
+        return db.collection('users').doc(cred.user.uid).set({
+            name: username
+        })
+        
+    }).then( () => {
         $('#modal-registro').modal('hide');
         registroForm.reset();
     })
