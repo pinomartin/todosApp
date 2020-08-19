@@ -7,7 +7,7 @@ const setupNavUI = (user) => {
     if(user){
         //account data
         db.collection('users').doc(user.uid).get().then(doc=> {
-            console.log(doc.data());
+            
             const html = `
             <div class="row">
                  <div class="col-6">

@@ -4,7 +4,7 @@ auth.onAuthStateChanged( user => {
     if(user){
         
         //Getter de la Coleccion en Firestore
-        db.collection('todos').onSnapshot(snapshot => {
+        db.collection('todos').where("userId","==",user.uid).onSnapshot(snapshot => {
             setupTodos(snapshot.docs);
             setupNavUI(user);
         }, err => { console.log(err.message)})
@@ -26,12 +26,13 @@ registroForm.addEventListener('submit', (e) => {
     
     const email = registroForm['signup-email'].value;
     const password = registroForm['signup-password'].value;
+    const username = registroForm['signup-name'].value;
     
 
     //Registrar al usuario
     auth.createUserWithEmailAndPassword(email, password).then( cred => {
-        return db.collection('users').doc(cred.user.uid).set({
-            name: registroForm['signup-name'].value
+       return db.collection('users').doc(cred.user.uid).set({
+            name: username
         })
         
     }).then( () => {
@@ -71,10 +72,14 @@ loginForm.addEventListener('submit', (e) => {
 const addTodoForm = document.getElementById('form-tarea');
 addTodoForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
+    //Datos/Id del usuario activo
+    const user = auth.currentUser;
+    const loggedInUserId = user.uid;
+    
     db.collection('todos').add({
         content : addTodoForm['contenido'].value,
-        titulo : addTodoForm['titulo-tarea'].value
+        titulo : addTodoForm['titulo-tarea'].value,
+        userId: loggedInUserId
     }).then(() => {
         //Cierra modal y resetea form
         console.log(addTodoForm['titulo-tarea'].value)
