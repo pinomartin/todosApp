@@ -9,12 +9,22 @@ body{
     background-color: #FFD34B!important;
 }
 
+ul li a{
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: ;
+}
 
+/*Contenedor y cards*/
 .container{
     border-radius: 2rem 0rem;
     margin-bottom: 2rem;
     background-color: rgb(84,122,135);
+    border: 0.5rem double  rgb(151,208,192);
 }
+
+
+
 .card{
     border: none!important;
 }
