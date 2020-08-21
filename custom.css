@@ -12,7 +12,7 @@ body{
 ul li a{
     font-size: 1rem;
     text-transform: uppercase;
-    background-color: ;
+    
 }
 
 /*Contenedor y cards*/
@@ -23,6 +23,14 @@ ul li a{
     border: 0.5rem double  rgb(151,208,192);
 }
 
+.jumbotron p strong{
+    text-transform: uppercase;
+    color: #686565;
+}
+
+.btn-registro{
+    background-color: rgb(255,116,104)!important;
+}
 
 
 .card{

@@ -3,11 +3,12 @@ const loggedInLinks = document.querySelectorAll('.login-link');
 const loggedOutLinks = document.querySelectorAll('.logout-link');
 const accountDetails = document.getElementById('detalles-cuenta');
 
+
 const setupNavUI = (user) => {
     if(user){
         //account data
         db.collection('users').doc(user.uid).get().then(doc=> {
-            
+            console.log(doc.data());
             const html = `
             <div class="row">
                  <div class="col-6">
@@ -43,8 +44,8 @@ const setupNavUI = (user) => {
     $('#collapsibleNavbar').collapse('hide');
     
 }
-
-const setupTodos = (data) => {
+//display (on, off)
+const setupTodos = (data, display) => {
 
     if(data.length){
         let html = '';
@@ -87,7 +88,41 @@ const setupTodos = (data) => {
        
         // .setAttribute('aria-expanded', 'true');
     }else{
-        todosListUI.innerHTML = `<h5 class="text-center mt-5">Ingresa para ver tu lista !!</h5>`;
+        
+    if (display){
+        
+        let htmldefault = '';
+        htmldefault =` 
+        <div class="row justify-content-center">
+                    <div class="jumbotron bg-light">
+                        <p class="text-center"><strong>Aqui podras guardar tus notas de manera segura</strong></p>
+                        <hr class="my-2">
+                        <p class="lead text-center mt-4 mb-3">
+                            <a class="btn btn-warning btn-md" href="Jumbo action link" data-toggle="modal" data-target="#modal-login">Ingresá</a>
+                        </p>
+                        <p class="pt-3 text-right">No tenes cuenta??</p>
+                        <p class="text-right">
+                            <a class="btn btn-registro btn-sm" href="Jumbo action link" data-toggle="modal" data-target="#modal-registro">Registrate</a>
+                        </p>
+                    </div>
+                </div>
+        `;
+ 
+        todosListUI.innerHTML = htmldefault;
+        
+       
+    }
+    else{
+      
+
+       todosListUI.innerHTML = `
+       <h2>Comienza a guardar tus notas</h2>
+        `;
+    }
+    
+        
+        
+
     }
 
     

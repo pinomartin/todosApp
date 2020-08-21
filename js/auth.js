@@ -2,16 +2,18 @@
 //Listener de state Changes (recibe un usuario que esta activo , si el usuario no esta logeado devuelve null)
 auth.onAuthStateChanged( user => {
     if(user){
-        
         //Getter de la Coleccion en Firestore
         db.collection('todos').where("userId","==",user.uid).onSnapshot(snapshot => {
-            setupTodos(snapshot.docs);
+            if(snapshot.docs === []){
+                setupTodos(snapshot.docs,true)
+            }
+            setupTodos(snapshot.docs,false);
             setupNavUI(user);
         }, err => { console.log(err.message)})
 
     }else{
         setupNavUI();
-        setupTodos([]);
+        setupTodos([],true);
         console.log('Usuario salio')
     }
 })
@@ -31,9 +33,12 @@ registroForm.addEventListener('submit', (e) => {
 
     //Registrar al usuario
     auth.createUserWithEmailAndPassword(email, password).then( cred => {
-       return db.collection('users').doc(cred.user.uid).set({
-            name: username
-        })
+        const delay = async () => {
+            return await db.collection('users').doc(cred.user.uid).set({
+                name: username
+            })
+        }
+        delay();
         
     }).then( () => {
         $('#modal-registro').modal('hide');
