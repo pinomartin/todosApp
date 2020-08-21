@@ -94,7 +94,7 @@ const setupTodos = (data, display) => {
         let htmldefault = '';
         htmldefault =` 
         <div class="row justify-content-center">
-                    <div class="jumbotron bg-light">
+                    <div class="jumbotron bg-transparent">
                         <p class="text-center"><strong>Aqui podras guardar tus notas de manera segura</strong></p>
                         <hr class="my-2">
                         <p class="lead text-center mt-4 mb-3">
