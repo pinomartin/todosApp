@@ -134,5 +134,5 @@ const setupTodos = (data, display) => {
 }
 
 const setupLoading = () => {
-        todosListUI.innerHTML = `<img src="img/spinner.svg" id="spinner" class="text-center" alt="">`;
+        todosListUI.innerHTML = `<img src="img/spinner.svg" id="spinner" class="img-fluid" alt="">`;
 }
