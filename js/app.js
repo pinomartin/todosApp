@@ -2,7 +2,7 @@ const todosListUI = document.getElementById('accordion');
 const loggedInLinks = document.querySelectorAll('.login-link');
 const loggedOutLinks = document.querySelectorAll('.logout-link');
 const accountDetails = document.getElementById('detalles-cuenta');
-
+const spinnerLoading = document.getElementById('spinner')
 
 const setupNavUI = (user) => {
     if(user){
@@ -131,4 +131,8 @@ const setupTodos = (data, display) => {
     }
 
     
+}
+
+const setupLoading = () => {
+        todosListUI.innerHTML = `<img src="img/spinner.svg" id="spinner" class="text-center" alt="">`;
 }

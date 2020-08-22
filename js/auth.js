@@ -2,15 +2,17 @@
 //Listener de state Changes (recibe un usuario que esta activo , si el usuario no esta logeado devuelve null)
 auth.onAuthStateChanged( user => {
     if(user){
-        //Getter de la Coleccion en Firestore
-        db.collection('todos').where("userId","==",user.uid).onSnapshot(snapshot => {
-            if(snapshot.docs === []){
-                setupTodos(snapshot.docs,true)
-            }
-            setupTodos(snapshot.docs,false);
-            setupNavUI(user);
-        }, err => { console.log(err.message)})
-
+      
+            setupLoading();
+              db.collection('todos').where("userId","==",user.uid).onSnapshot(snapshot => {
+                if(snapshot.docs === []){
+                    setupTodos(snapshot.docs,true)
+                }
+                setupTodos(snapshot.docs,false);
+                setupNavUI(user);
+            }, err => { console.log(err.message)})
+    
+       
     }else{
         setupNavUI();
         setupTodos([],true);
@@ -64,9 +66,10 @@ loginForm.addEventListener('submit', (e) => {
     //Obtener datos del usuario
     const email = loginForm['login-email'].value;
     const password = loginForm['login-password'].value;
-
+    
     auth.signInWithEmailAndPassword(email,password).then( credencial => {
         console.log(credencial.user);
+        
         $('#modal-login').modal('hide');
         loginForm.reset();
 
