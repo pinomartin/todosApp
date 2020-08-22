@@ -43,7 +43,8 @@ registroForm.addEventListener('submit', (e) => {
     }).then( () => {
         $('#modal-registro').modal('hide');
         registroForm.reset();
-    })
+
+    }).catch(err => alert('Esta cuenta ya existe.. utiliza otro e-mail.'))
 });
 
 //Salir(Logout)
@@ -68,7 +69,8 @@ loginForm.addEventListener('submit', (e) => {
         console.log(credencial.user);
         $('#modal-login').modal('hide');
         loginForm.reset();
-    })
+
+    }).catch(err => alert('El usuario o la contraseña son incorrectos.'))
     
 
 })

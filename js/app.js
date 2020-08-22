@@ -27,16 +27,16 @@ const setupNavUI = (user) => {
 
 
         loggedInLinks.forEach(item => {item.classList.add('d-block')})
-        loggedOutLinks.forEach(item => { item.classList.add('d-none')})
+        // loggedOutLinks.forEach(item => { item.classList.add('d-none')})
         
     }else{
         loggedInLinks.forEach(item => {
             item.classList.remove('d-block')
             item.classList.add('d-none')
         })
-        loggedOutLinks.forEach(item => {
-            item.classList.remove('d-none')
-        })
+        // loggedOutLinks.forEach(item => {
+        //     item.classList.remove('d-none')
+        // })
         accountDetails.innerHTML = '';
 
     }
@@ -116,7 +116,12 @@ const setupTodos = (data, display) => {
       
 
        todosListUI.innerHTML = `
-       <h2>Comienza a guardar tus notas</h2>
+                    <div class="row justify-content-center">
+                    <div class="jumbotron text-center">
+                        <h5 class"text-center small">Bienvenid@! </h5>
+                        <a class="btn btn-registro btn-sm" href="#" data-toggle="modal" data-target="#modal-tarea">Crear mi primera nota</a>
+                        <hr class="my-2">
+                    </div>
         `;
     }
     

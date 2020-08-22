@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav justify-content-center">
                 <li class="nav-item text-center login-link d-none">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-tarea">Crear Tarea</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-tarea">Nueva Nota</a>
                 </li>
                 <li class="nav-item text-center login-link d-none">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-cuenta">Mi Perfil</a>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <label for="signup-password">Contraseña</label>
-                            <input type="password" id="signup-password" class="form-control" required>
+                            <input type="password" id="signup-password" placeholder="...usá 8 o más caracteres" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="signup-name">Tu Nombre</label>
@@ -124,7 +124,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Nueva Tarea</h4>
+                    <h4 class="modal-title">Mi Nota</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -132,7 +132,7 @@
                 <div class="modal-body">
                     <form id="form-tarea">
                         <div class="form-group">
-                            <label for="titulo-tarea">Nombre Tarea</label>
+                            <label for="titulo-tarea">Titulo</label>
                             <input type="text" id="titulo-tarea" class="form-control" required>
                         </div>
                         <div class="form-group">
