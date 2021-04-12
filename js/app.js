@@ -50,13 +50,15 @@ const setupTodos = (data, display) => {
     if(data.length){
         let html = '';
         data.forEach((doc,index) => {
+            const todoId = doc.id;
             const todo = doc.data();
+            const {titulo,content} = todo;
             const card = `
             <div class="card">
             <div class="card-header justify-content-between">
                 <a class="card-link" data-toggle="collapse" href="#collapse${index}">
                 
-                ${todo.titulo}
+                ${titulo}
                 
                 <svg width="1em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle float-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -69,11 +71,11 @@ const setupTodos = (data, display) => {
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8 text-center-sm text-left-md">
-                            <p>${todo.content}</p>
+                            <p>${content}</p>
                         </div>
                         <div class="col-12 col-md-4 align-self-center text-right botonera">
-                            <button type="button" class="btn btn-sm btn-success">OK !</button>
-                            <button type="button" class="btn btn-sm btn-warning">Edit</button>
+                            <button type="button" class="btn btn-sm btn-success" onclick="{deleteTodo('${todoId}')}">OK !</button>
+                            <button type="button" class="btn btn-sm btn-warning" onclick="{updateTodo('${todoId}','${titulo}','${content}')}">Edit</button>
                         </div>
                     </div>
                 

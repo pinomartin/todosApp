@@ -2,8 +2,8 @@
 //Listener de state Changes (recibe un usuario que esta activo , si el usuario no esta logeado devuelve null)
 auth.onAuthStateChanged( user => {
     if(user){
-      
-            setupLoading();
+         
+              setupLoading();
               db.collection('todos').where("userId","==",user.uid).onSnapshot(snapshot => {
                 if(snapshot.docs === []){
                     setupTodos(snapshot.docs,true)
@@ -99,3 +99,17 @@ addTodoForm.addEventListener('submit', (e) => {
         console.log(err.message);
     })
 })
+
+const deleteTodo = async (id) => {
+    await id;
+    await db.collection('todos').doc(id).delete().then( console.log('Nota Eliminada'));
+}
+
+const updateTodo = async(id, titulo,content) => {
+    await id , titulo, content
+    await console.log(id , titulo, content);
+    addTodoForm['titulo-tarea'].value = titulo;
+    addTodoForm['contenido'].value = content;
+    $('#modal-tarea').modal('show');
+    
+}
